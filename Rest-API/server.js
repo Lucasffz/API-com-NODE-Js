@@ -23,6 +23,7 @@ const route = router.get('/', (req,res,next) => {
 app.use('/', route);
 
 server.listen(port);
+server.on('listening',onListening);
 console.log('API rodando em porta ' + port);
  
 
@@ -38,5 +39,9 @@ function normalizePort(val){
     return false;
 }
 
-
+function onListening(){
+    const addr = server.address();
+    const bind = typeof addr === 'string' ? 'pipe' + addr : 'port' + addr.port;
+    debug('Listening on' + bind);
+}
 
