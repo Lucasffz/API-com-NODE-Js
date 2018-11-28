@@ -1,22 +1,26 @@
 'use strict';
 const express = require('express');
+const bodyParser = require('body-parser');
+const index = require('./routers/index');
+
 // Instancia uma aplicação express
+
 const app = express();
+const router = express.Router();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extend: false}));
 
-const router = express.Router()
 
 
-const route = router.get('/', (req,res,next) => {
-    res.status(200).send({
-        title: 'REST api',
-        version: '0.1'
-    });
-});
 
-const create = router.post('/', (req,res,next) => {
-    res.status(201).send(req.body);
-});
 
-app.use('/', route);
+app.use('/', index);
+app.use('/contatos', create);
+app.use('/contatos', put);
+app.use('/contatos',del);
+
+
+
+
 
 module.exports = app;
