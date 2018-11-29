@@ -2,6 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const index = require('./routers/index');
+const contato = require('./routers/contatos/contato');
+
 
 // Instancia uma aplicação express
 
@@ -10,16 +12,8 @@ const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extend: false}));
 
-
-
-
-
 app.use('/', index);
-app.use('/contatos', create);
-app.use('/contatos', put);
-app.use('/contatos',del);
-
-
+app.use('/contatos', contato);
 
 
 
