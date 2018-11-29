@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const index = require('./routers/index');
-const contato = require('./routers/contatos/contato');
+const contato = require('./routers/contatos');
 
 
 // Instancia uma aplicação express
